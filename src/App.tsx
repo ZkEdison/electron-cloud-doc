@@ -1,26 +1,41 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { FC } from "react";
+import "./App.css";
+import { Col, Row } from "antd";
+import FileSearch from "./components/FileSearch";
+import FileList from "./components/FileList";
+import BottomBtn from "./components/BottomBtn";
+import TabList from "./components/TabList";
 
-function App() {
+const App: FC = () => {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+      <Row
+        style={{
+          height: "100%",
+        }}
+      >
+        <Col
+          span={6}
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            height: "100%",
+          }}
         >
-          Learn React
-        </a>
-      </header>
+          <FileSearch
+            onFileSearch={(v) => {
+              console.log(v);
+            }}
+          />
+          <FileList onFileDelete={() => {}} />
+          <BottomBtn />
+        </Col>
+        <Col span={18}>
+          <TabList />
+        </Col>
+      </Row>
     </div>
   );
-}
+};
 
 export default App;
